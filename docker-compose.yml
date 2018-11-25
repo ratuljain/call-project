@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  # env var are defined in the Dockerfile
+  web:
+    restart: always
+    environment:
+    - DJANGO_MANAGEPY_MIGRATE=on
+    - DJANGO_MANAGEPY_COLLECTSTATIC=off
+    - DJANGO_CREATE_SUPERUSER=on
+    - DJANGO_ADMIN_USERNAME=admin
+    - DJANGO_ADMIN_PASSWORD=fortheloveofgodpleaseuseagoodpassword
+    - DEBUG=true
+    - PYTHONUNBUFFERED=1 # cause all output to stdout to be flushed immediately
+    build:
+      context: ./
+      dockerfile: ./docker/web/Dockerfile
+    volumes:
+    - .:/code
+    - .db_data/db.sqlite3:/db.sqlite3
+    expose:
+    - "8000"
+    ports:
+    - "8000:8000"

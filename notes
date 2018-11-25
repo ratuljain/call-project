@@ -1,0 +1,8 @@
+Phone number is a text field -
+Are you going to add/subtract/multiply/divide Phone Numbers?Nope. Similarly to SSNs, Phone Numbers are discrete pieces
+of data that can contain actual numbers, so a string type is probably most appropriate.
+In an int column, the 0 will be stripped of, which makes the phone number invalid.
+
+
+
+
